@@ -1,0 +1,35 @@
+server:
+  port: 8084
+---     
+spring:
+  profiles: default  
+  datasource: 
+    hikari:
+      driver-class-name: com.mysql.jdbc.Driver  
+      username: fds
+      password: fds
+      jdbc-url: jdbc:mysql://10.106.139.240:13306/fds
+      pool-name: hikari-cp   
+      connection-test-query: SELECT 1 
+      minimum-idle: 30
+      maximum-pool-size: 50
+      auto-commit: true
+      max-lifetime: 30000
+      connection-timeout: 60000
+    
+---
+spring:
+  profiles: dev
+  datasource: 
+    hikari:
+      driver-class-name: com.mysql.jdbc.Driver  
+      username: fds
+      password: fds
+      jdbc-url: jdbc:mysql://10.106.139.240:13306/fds
+      pool-name: hikari-cp   
+      connection-test-query: SELECT 1 
+      minimum-idle: 30
+      maximum-pool-size: 50
+      auto-commit: true
+      max-lifetime: 30000
+      connection-timeout: 60000

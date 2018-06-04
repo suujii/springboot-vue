@@ -11,9 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: { //(변경): node.js 서버가 바라볼 개발 backend 서버 proxy설정
-    	'/sample': {
+    	'/sample/info': {
             target: 'http://localhost:8084',
-            changeOrigin: true
+            changeOrigin: true,
+            pathRewrite: {
+                '^/sample/info': ''
+              }
+
           }
     },
 

@@ -1,77 +1,44 @@
 <template>
   <div id="#app">
-    {{sample.id}}
-    {{sample.val}}
+    <button @click="searchSample()">Search Sample</button>
+    <h4 v-if="showResponse">Sample User {{sample.id}} {{sample.val}}</h4>
   </div>
 </template>
-
 <script>
-  import {AXIOS} from './http-common'
+import {AXIOS} from './http-common'
 
   export default {
-    el : "#app",
-    data : {
-      response : [],
-      sample : {
-        id : '',
-        val : ''
-      },
-    }
-    methods: {
-      getData: function(){
-        axios.get('/user/suji')
-        .then(function(response){
-          this.response = response.data
-          this.sample.id = response.data.id
-          this.sample.val = response.data.val
-        });
+    name: '#app',
+
+    data () {
+      return {
+        response: [],
+        errors: [],
+        sample: {
+          id: '',
+          val: ''
+        },
+        showResponse: false
       }
-    }<template>
-  <div id="#app">
-    {{sample.id}}
-    {{sample.val}}
-  </div>
-</template>
-
-<script>
-  import {AXIOS} from './http-common'
-
-  export default {
-    el : "#app",
-    data : {
-      response : [],
-      errors : [],
-      sample : {
-        id : '',
-        val : ''
-      },
-    }
+    },
     methods: {
-      getData: function(){
-        axios.get('/user/suji')
-        .then(function(response){
-          this.response = response.data
-          this.sample.id = response.data.id
-          this.sample.val = response.data.val
-        }).catch(e => {
-          this.errors.push(e)
-        });
+      // Fetches posts when the component is created.
+      searchSample () {
+        AXIOS.get(`/info/` + 'suji')
+          .then(response => {
+            this.sample = response.data
+            console.log(response.data)
+            this.showResponse = true
+          })
+          .catch(e => {
+            this.errors.push(e)
+          })
       }
     }
   }
+  
 </script>
 
 <style>
-#app {
-  font-style: italic
-}
-</style>
-    
-  }
-</script>
 
-<style>
-#app {
-  font-style: italic;
-}
 </style>

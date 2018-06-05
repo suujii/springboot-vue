@@ -6,19 +6,18 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
+    env: require('./dev.env'), //dev add
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: { //(변경): node.js 서버가 바라볼 개발 backend 서버 proxy설정
-    	'/sample/info': {
-            target: 'http://localhost:8084',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/sample/info': ''
-              }
+      '**': {
+          target: 'http://localhost:8084',
+          filter: function (pathname, req) {
+          return pathname.match('^/sample')
+        }
+    }
 
-          }
     },
 
     // Various Dev Server settings
@@ -32,7 +31,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    // useEslint: true,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,

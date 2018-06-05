@@ -4,6 +4,7 @@
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
     <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
+    <Sample></Sample>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+import Sample from './components/Sample.vue'
 
 export default {
   data() {
@@ -44,7 +46,8 @@ export default {
     'TodoHeader': TodoHeader,
     'TodoInput': TodoInput,
     'TodoList': TodoList,
-    'TodoFooter': TodoFooter
+    'TodoFooter': TodoFooter,
+    'Sample': Sample
   }
 }
 </script>

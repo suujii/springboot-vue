@@ -1,14 +1,14 @@
 <template>
-  <div id="#app">
+  <div id="sample">
     <button @click="searchSample()">Search Sample</button>
     <h4 v-if="showResponse">Sample User {{sample.id}} {{sample.val}}</h4>
   </div>
 </template>
 <script>
-import {AXIOS} from './http-common'
+import {AXIOS} from '@/components/http-common'
 
   export default {
-    name: '#app',
+    name: 'sample',
 
     data () {
       return {
